@@ -1,4 +1,4 @@
-package cn.kahvia.test1;
+package cn.kahvia.test1_2;
 
 public class Triangle {
     public String classify(int a, int b, int c) {

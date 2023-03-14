@@ -1,5 +1,6 @@
 package cn.kahvia.test1;
 
+import cn.kahvia.test1_2.Triangle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
