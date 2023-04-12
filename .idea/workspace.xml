@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcc35e92-aac2-4d26-a0c2-571a9561105b" name="Changes" comment="split the project.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="bcc35e92-aac2-4d26-a0c2-571a9561105b" name="Changes" comment="correct the test6.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/code/courses/software_test/test1-5",
+    "last_opened_file_path": "D:/code/courses/software_test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -342,6 +341,7 @@
       <workItem from="1681210574692" duration="50000" />
       <workItem from="1681276778831" duration="2084000" />
       <workItem from="1681286460951" duration="806000" />
+      <workItem from="1681302198532" duration="431000" />
     </task>
     <task id="LOCAL-00001" summary="Finished test one.">
       <created>1678623606170</created>
@@ -399,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681287140059</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="correct the test6.">
+      <created>1681302616958</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681302616958</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,7 +437,8 @@
     <MESSAGE value="delete test six." />
     <MESSAGE value="add test six." />
     <MESSAGE value="split the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="split the project." />
+    <MESSAGE value="correct the test6." />
+    <option name="LAST_COMMIT_MESSAGE" value="correct the test6." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
