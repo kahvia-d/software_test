@@ -42,6 +42,7 @@ task defaultTest(type: Test) {
     testClassesDirs = sourceSets.defaultTest.output.classesDirs
     classpath = sourceSets.defaultTest.runtimeClasspath
 }
+
 test.dependsOn defaultTest
 
 test {

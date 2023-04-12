@@ -58,6 +58,23 @@ class MySquareTest {
     }
 
 
+    @Test
+    void testLeave() {
+        Unit occupant = mock(Unit.class);
+        square.put(occupant);
+        square.remove(occupant);
 
+        assertThat(square.getOccupants()).doesNotContain(occupant);
+    }
+
+    @Test
+    void testOrder() {
+        Unit o1 = mock(Unit.class);
+        Unit o2 = mock(Unit.class);
+        square.put(o1);
+        square.put(o2);
+
+        assertThat(square.getOccupants()).containsSequence(o1, o2);
+    }
 
 }
