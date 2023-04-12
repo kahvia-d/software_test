@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LinkedListTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LinkedListTest Coverage Results</a> &gt; <a href="index.source.html" class="el_package">cn.kahvia.test5</a> &gt; <span class="el_source">LinkedListTest.java</span></div><h1>LinkedListTest.java</h1><pre class="source lang-java linenums">package cn.kahvia.test5;
+
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+<span class="fc" id="L8">class LinkedListTest {</span>
+
+    //删除不存在的null对象
+    @Test
+    void testRemoveNullObjectNoExits(){
+<span class="fc" id="L13">        LinkedList&lt;String&gt; linkedList=new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L14">        linkedList.add(&quot;a&quot;);</span>
+<span class="fc" id="L15">        linkedList.add(&quot;b&quot;);</span>
+<span class="fc" id="L16">        linkedList.add(&quot;c&quot;);</span>
+<span class="fc" id="L17">        assertFalse(linkedList.remove(null));</span>
+<span class="fc" id="L18">    }</span>
+
+    //删除存在的null对象
+    @Test
+    void testRemoveNullObjectExits(){
+<span class="fc" id="L23">        LinkedList&lt;String&gt; linkedList=new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L24">        linkedList.add(&quot;a&quot;);</span>
+<span class="fc" id="L25">        linkedList.add(&quot;b&quot;);</span>
+<span class="fc" id="L26">        linkedList.add(&quot;c&quot;);</span>
+<span class="fc" id="L27">        linkedList.add(null);</span>
+<span class="fc" id="L28">        assertTrue(linkedList.remove(null));</span>
+<span class="fc" id="L29">    }</span>
+
+    //删除不存在的非null对象
+    @Test
+    void testRemoveNonNullObjectNoExits(){
+<span class="fc" id="L34">        LinkedList&lt;String&gt; linkedList=new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L35">        linkedList.add(&quot;a&quot;);</span>
+<span class="fc" id="L36">        linkedList.add(&quot;b&quot;);</span>
+<span class="fc" id="L37">        linkedList.add(&quot;c&quot;);</span>
+<span class="fc" id="L38">        assertFalse(linkedList.remove(&quot;d&quot;));</span>
+<span class="fc" id="L39">    }</span>
+
+    //删除存在的非null对象
+    @Test
+    void testRemoveNonNullObjectExits(){
+<span class="fc" id="L44">        LinkedList&lt;String&gt; linkedList=new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L45">        linkedList.add(&quot;a&quot;);</span>
+<span class="fc" id="L46">        linkedList.add(&quot;b&quot;);</span>
+<span class="fc" id="L47">        linkedList.add(&quot;c&quot;);</span>
+<span class="fc" id="L48">        assertTrue(linkedList.remove(&quot;b&quot;));</span>
+<span class="fc" id="L49">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

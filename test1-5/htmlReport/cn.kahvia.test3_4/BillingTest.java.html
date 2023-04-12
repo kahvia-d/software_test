@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BillingTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LinkedListTest Coverage Results</a> &gt; <a href="index.source.html" class="el_package">cn.kahvia.test3_4</a> &gt; <span class="el_source">BillingTest.java</span></div><h1>BillingTest.java</h1><pre class="source lang-java linenums">package cn.kahvia.test3_4;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+<span class="nc" id="L7">public class BillingTest {</span>
+
+    private static final double DELTA = 0.0001;
+
+
+    @Test
+    @DisplayName(&quot;二十分钟以内，不含夏令时转换&quot;)
+    public void testLessThan20Minutes() {
+<span class="nc" id="L15">        Billing billing = new Billing();</span>
+<span class="nc" id="L16">        double cost = billing.calculateCost(&quot;2023-01-01 12:00:00&quot;, &quot;2023-01-01 12:10:00&quot;,1,1,false,false);</span>
+<span class="nc" id="L17">        assertEquals(0.5, cost, DELTA);</span>
+<span class="nc" id="L18">    }</span>
+
+    @Test
+    @DisplayName(&quot;二十分钟以内，含夏令时开始转换&quot;)
+    public void testLessThan20MinutesWithSummerStart() {
+<span class="nc" id="L23">        Billing billing = new Billing();</span>
+<span class="nc" id="L24">        double cost = billing.calculateCost(&quot;2023-03-05 01:55:00&quot;, &quot;2023-03-05 03:05:00&quot;,1,1,false,true);</span>
+<span class="nc" id="L25">        assertEquals(0.5, cost, DELTA);</span>
+<span class="nc" id="L26">    }</span>
+
+    @Test
+    @DisplayName(&quot;二十分钟以内，含夏令时结束转换&quot;)
+    public void testLessThan20MinutesWithSummerEnd() {
+<span class="nc" id="L31">        Billing billing = new Billing();</span>
+<span class="nc" id="L32">        double cost = billing.calculateCost(&quot;2023-11-05 02:30:00&quot;, &quot;2023-11-05 02:40:00&quot;,1,1,true,true);</span>
+<span class="nc" id="L33">        assertEquals(0.5, cost, DELTA);</span>
+<span class="nc" id="L34">    }</span>
+
+
+    @Test
+    @DisplayName(&quot;二十分钟以上，不含夏令时转换&quot;)
+    public void testGreaterThan20Minutes() {
+        //二十分钟一美元，超出每分钟0.10美元
+<span class="nc" id="L41">        Billing billing = new Billing();</span>
+<span class="nc" id="L42">        double cost = billing.calculateCost(&quot;2023-03-05 03:00:00&quot;, &quot;2023-03-05 03:25:00&quot;,1,1,true,true);</span>
+<span class="nc" id="L43">        assertEquals(1.5, cost, DELTA);</span>
+<span class="nc" id="L44">    }</span>
+
+    @Test
+    @DisplayName(&quot;二十分钟以上，含夏令时开始转换&quot;)
+    public void testGreaterThan20MinutesWithSummerStart() {
+<span class="nc" id="L49">        Billing billing = new Billing();</span>
+<span class="nc" id="L50">        double cost = billing.calculateCost(&quot;2023-03-05 01:45:00&quot;, &quot;2023-03-05 03:10:00&quot;,1,1,false,true);</span>
+<span class="nc" id="L51">        assertEquals(1.5, cost, DELTA);</span>
+<span class="nc" id="L52">    }</span>
+
+
+    @Test
+    @DisplayName(&quot;二十分钟以上，含夏令时结束转换&quot;)
+    public void testGreaterThan20MinutesWithSummerEnd() {
+<span class="nc" id="L58">        Billing billing = new Billing();</span>
+<span class="nc" id="L59">        double cost = billing.calculateCost(&quot;2023-11-05 02:30:00&quot;, &quot;2023-11-05 02:40:00&quot;,1,1,false,true);</span>
+<span class="nc" id="L60">        assertEquals(6.0, cost, DELTA);//0.5 or 6?</span>
+<span class="nc" id="L61">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
