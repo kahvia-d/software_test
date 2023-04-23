@@ -43,12 +43,14 @@ public class Clyde extends Ghost {
 
     /**
      * The amount of cells Clyde wants to stay away from Pac Man.
+     * 克莱德想和吃豆人保持的距离
      */
     private static final int SHYNESS = 8;
 
     /**
      * The variation in intervals, this makes the ghosts look more dynamic and
      * less predictable.
+     * 幽灵行动间隔的变化，让幽灵更难被预测
      */
     private static final int INTERVAL_VARIATION = 50;
 
