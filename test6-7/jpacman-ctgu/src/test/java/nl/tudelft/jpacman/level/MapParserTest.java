@@ -14,7 +14,6 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MapParserTest {
     @InjectMocks//将其它的mock对象作为依赖注入下面的parser
     @Spy
