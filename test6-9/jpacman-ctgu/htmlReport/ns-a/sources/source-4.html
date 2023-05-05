@@ -1,0 +1,254 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PacManSprites</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">nl.tudelft.jpacman.sprite</a>
+</div>
+
+<h1>Coverage Summary for Class: PacManSprites (nl.tudelft.jpacman.sprite)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PacManSprites</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88%
+  </span>
+  <span class="absValue">
+    (22/25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package nl.tudelft.jpacman.sprite;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;import nl.tudelft.jpacman.PacmanConfigurationException;
+&nbsp;import nl.tudelft.jpacman.board.Direction;
+&nbsp;import nl.tudelft.jpacman.npc.ghost.GhostColor;
+&nbsp;
+&nbsp;/**
+&nbsp; * Sprite Store containing the classic Pac-Man sprites.
+&nbsp; *
+&nbsp; * @author Jeroen Roosen 
+&nbsp; */
+<b class="fc">&nbsp;public class PacManSprites extends SpriteStore {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The sprite files are vertically stacked series for each direction, this
+&nbsp;     * array denotes the order.
+&nbsp;     */
+<b class="fc">&nbsp;    private static final Direction[] DIRECTIONS = {</b>
+&nbsp;        Direction.NORTH,
+&nbsp;        Direction.EAST,
+&nbsp;        Direction.SOUTH,
+&nbsp;        Direction.WEST
+&nbsp;    };
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The image size in pixels.
+&nbsp;     */
+&nbsp;    private static final int SPRITE_SIZE = 16;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The amount of frames in the pacman animation.
+&nbsp;     */
+&nbsp;    private static final int PACMAN_ANIMATION_FRAMES = 4;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The amount of frames in the pacman dying animation.
+&nbsp;     */
+&nbsp;    private static final int PACMAN_DEATH_FRAMES = 11;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The amount of frames in the ghost animation.
+&nbsp;     */
+&nbsp;    private static final int GHOST_ANIMATION_FRAMES = 2;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The delay between frames.
+&nbsp;     */
+&nbsp;    private static final int ANIMATION_DELAY = 200;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return A map of animated Pac-Man sprites for all directions.
+&nbsp;     */
+&nbsp;    public Map&lt;Direction, Sprite&gt; getPacmanSprites() {
+<b class="fc">&nbsp;        return directionSprite(&quot;/sprite/pacman.png&quot;, PACMAN_ANIMATION_FRAMES);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return The animation of a dying Pac-Man.
+&nbsp;     */
+&nbsp;    public AnimatedSprite getPacManDeathAnimation() {
+<b class="fc">&nbsp;        String resource = &quot;/sprite/dead.png&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        Sprite baseImage = loadSprite(resource);</b>
+<b class="fc">&nbsp;        AnimatedSprite animation = createAnimatedSprite(baseImage, PACMAN_DEATH_FRAMES,</b>
+&nbsp;            ANIMATION_DELAY, false);
+<b class="fc">&nbsp;        animation.setAnimating(false);</b>
+&nbsp;
+<b class="fc">&nbsp;        return animation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns a new map with animations for all directions.
+&nbsp;     *
+&nbsp;     * @param resource
+&nbsp;     *            The resource name of the sprite.
+&nbsp;     * @param frames
+&nbsp;     *            The number of frames in this sprite.
+&nbsp;     * @return The animated sprite facing the given direction.
+&nbsp;     */
+&nbsp;    private Map&lt;Direction, Sprite&gt; directionSprite(String resource, int frames) {
+<b class="fc">&nbsp;        Map&lt;Direction, Sprite&gt; sprite = new HashMap&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        Sprite baseImage = loadSprite(resource);</b>
+<b class="fc">&nbsp;        for (int i = 0; i &lt; DIRECTIONS.length; i++) {</b>
+<b class="fc">&nbsp;            Sprite directionSprite = baseImage.split(0, i * SPRITE_SIZE, frames</b>
+&nbsp;                * SPRITE_SIZE, SPRITE_SIZE);
+<b class="fc">&nbsp;            AnimatedSprite animation = createAnimatedSprite(directionSprite,</b>
+&nbsp;                frames, ANIMATION_DELAY, true);
+<b class="fc">&nbsp;            animation.setAnimating(true);</b>
+<b class="fc">&nbsp;            sprite.put(DIRECTIONS[i], animation);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return sprite;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns a map of animated ghost sprites for all directions.
+&nbsp;     *
+&nbsp;     * @param color
+&nbsp;     *            The colour of the ghost.
+&nbsp;     * @return The Sprite for the ghost.
+&nbsp;     */
+&nbsp;    public Map&lt;Direction, Sprite&gt; getGhostSprite(GhostColor color) {
+<b class="fc">&nbsp;        assert color != null;</b>
+&nbsp;
+<b class="fc">&nbsp;        String resource = &quot;/sprite/ghost_&quot; + color.name().toLowerCase()</b>
+&nbsp;            + &quot;.png&quot;;
+<b class="fc">&nbsp;        return directionSprite(resource, GHOST_ANIMATION_FRAMES);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return The sprite for the wall.
+&nbsp;     */
+&nbsp;    public Sprite getWallSprite() {
+<b class="fc">&nbsp;        return loadSprite(&quot;/sprite/wall.png&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return The sprite for the ground.
+&nbsp;     */
+&nbsp;    public Sprite getGroundSprite() {
+<b class="fc">&nbsp;        return loadSprite(&quot;/sprite/floor.png&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return The sprite for the
+&nbsp;     */
+&nbsp;    public Sprite getPelletSprite() {
+<b class="nc">&nbsp;        return loadSprite(&quot;/sprite/pellet.png&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Overloads the default sprite loading, ignoring the exception. This class
+&nbsp;     * assumes all sprites are provided, hence the exception will be thrown as a
+&nbsp;     * {@link RuntimeException}.
+&nbsp;     *
+&nbsp;     * {@inheritDoc}
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Sprite loadSprite(String resource) {
+&nbsp;        try {
+<b class="fc">&nbsp;            return super.loadSprite(resource);</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            throw new PacmanConfigurationException(&quot;Unable to load sprite: &quot; + resource, e);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-23 19:13</div>
+</div>
+</body>
+</html>

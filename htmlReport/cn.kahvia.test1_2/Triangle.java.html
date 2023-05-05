@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Triangle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LinkedListTest Coverage Results</a> &gt; <a href="index.source.html" class="el_package">cn.kahvia.test1_2</a> &gt; <span class="el_source">Triangle.java</span></div><h1>Triangle.java</h1><pre class="source lang-java linenums">package cn.kahvia.test1_2;
+
+<span class="nc" id="L3">public class Triangle {</span>
+    public String classify(int a, int b, int c) {
+<span class="nc bnc" id="L5" title="All 12 branches missed.">        if (a &lt;1 || a&gt;100 || b&lt;1 || b&gt;100 || c&lt;1 || c&gt; 100) {</span>
+<span class="nc" id="L6">            return &quot;输入错误&quot;;</span>
+        }
+<span class="nc bnc" id="L8" title="All 6 branches missed.">        if (!((a + b &gt; c) &amp;&amp; (a + c &gt; b) &amp;&amp; (b + c &gt; a))) {</span>
+<span class="nc" id="L9">            return &quot;非三角形&quot;;</span>
+<span class="nc bnc" id="L10" title="All 4 branches missed.">        } else if (a == b &amp;&amp; a == c) {</span>
+<span class="nc" id="L11">            return &quot;等边三角形&quot;;</span>
+<span class="nc bnc" id="L12" title="All 6 branches missed.">        } else if (a != b &amp;&amp; a != c &amp;&amp; b != c) {</span>
+<span class="nc" id="L13">            return &quot;不等边三角形&quot;;</span>
+        } else {
+<span class="nc" id="L15">            return &quot;等腰三角形&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
